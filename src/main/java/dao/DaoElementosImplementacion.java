@@ -1,18 +1,19 @@
-package org.example.dao;
+package dao;
 
-import org.example.domain.Elemento;
+import domain.Elemento;
 
 import java.util.List;
+import java.util.Random;
 
 public class DaoElementosImplementacion implements DaoElementos {
-private Elemento elemento;
+    private Elementos lista;
 
-    public DaoElementosImplementacion(Elemento elemento) {
-        this.elemento = elemento;
+    public DaoElementosImplementacion(Elementos lista) {
+        this.lista = lista;
     }
 
     public DaoElementosImplementacion() {
-        elemento = new Elemento();
+        lista = new Elementos();
     }
 
     @Override
@@ -22,7 +23,8 @@ private Elemento elemento;
 
     @Override
     public boolean insertarElemento(Elemento Elemento) {
-        return false;
+        //return lista.getListaElementos().add(Elemento);
+        return lista.insertarElemento(Elemento);
     }
 
     @Override
@@ -31,8 +33,13 @@ private Elemento elemento;
     }
 
     @Override
+    public List<Elemento> getElementos() {
+        return lista.getListaElementos();
+    }
+
+    @Override
     public List<Elemento> getElementosCategoria(String categoria) {
-        return List.of();
+        return lista.getListaElementosCategoria(categoria);
     }
 
     @Override
@@ -58,5 +65,13 @@ private Elemento elemento;
     @Override
     public boolean eliminarElemento(int id) {
         return false;
+    }
+
+    @Override
+    public String getPalabraAdivinar(String categoria) {
+        Random random = new Random();
+        System.out.println(getElementosCategoria(categoria).size());
+        System.out.println(getElementosCategoria(categoria));
+        return getElementosCategoria(categoria).get(random.nextInt(0,getElementosCategoria(categoria).size())).getPalabra();
     }
 }

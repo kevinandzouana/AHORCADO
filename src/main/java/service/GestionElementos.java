@@ -1,6 +1,6 @@
-package org.example.service;
+package service;
 
-import org.example.domain.Elemento;
+import domain.Elemento;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,11 +9,11 @@ public interface GestionElementos {
     public boolean isEmptyElementosList();
     public List<Elemento> getListaElementos();
     public boolean insertarElemento(Elemento Elemento);
+    public String getPalabraAdivinar(String categoria);
     public List<Elemento> listar(String categoria);
     public List<Elemento> listarElementos(boolean ascendente);
-    //public boolean modificarCategoria(String id, String categoria) throws CategoriaException;
     public boolean modificarElemento(String id, String incognita);
-    public List<Elemento> getListaElementosCategoria();
+    public List<Elemento> getListaElementosCategoria(String categoria);
     public void eliminarElemento(Elemento Elemento);
     public void crearFicheros()throws IOException;
     public boolean cargarFichero() throws IOException;

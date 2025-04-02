@@ -1,13 +1,14 @@
-package org.example.domain;
+package domain;
 
 import net.datafaker.Faker;
 
 import java.util.Random;
 
-public class Elemento implements Comparable<Elemento>{
+public class Elemento {
     private String id;
     private String palabra;
-    private String categoria;
+    private String categoria; //terror, comedia / personajes de serie o deportistas /
+
     public Elemento(String id, String palabra, String categoria) {
         this.id = id;
         this.palabra = palabra;
@@ -15,10 +16,11 @@ public class Elemento implements Comparable<Elemento>{
     }
 
     public Elemento() {
-        Random r = new Random();
-        this.id = String.valueOf(r.nextInt(100));
+        Random random = new Random();
+        this.id = String.valueOf(random.nextInt(100));
         this.palabra = new Faker().movie().name();
-        this.categoria="movies";
+        this.categoria= "movies";
+
     }
 
     public String getId() {
@@ -46,17 +48,12 @@ public class Elemento implements Comparable<Elemento>{
     }
 
     @Override
-    public int compareTo(Elemento o) {
-        return 0;
-    }
-
-    @Override
     public String toString() {
         return "Elemento{" +
                 "id='" + id + '\'' +
                 ", palabra='" + palabra + '\'' +
                 ", categoria='" + categoria + '\'' +
-                '}';
+                '}'+"\n";
     }
     public String toStringFichero(){
         StringBuilder sb = new StringBuilder();
@@ -65,6 +62,6 @@ public class Elemento implements Comparable<Elemento>{
         sb.append(this.palabra);
         sb.append(";");
         sb.append(this.categoria);
-        return toString();
+        return sb.toString();
     }
 }

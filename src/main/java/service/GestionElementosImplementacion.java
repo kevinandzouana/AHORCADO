@@ -1,21 +1,23 @@
-package org.example.service;
+package service;
 
-import org.example.dao.DaoElementos;
-import org.example.dao.DaoElementosImplementacion;
-import org.example.domain.Elemento;
+import dao.DaoElementos;
+import dao.DaoElementosImplementacion;
+import domain.Elemento;
 
 import java.io.IOException;
 import java.util.List;
 
-public class GestionElementosImplementacion implements GestionElementos {
+public class GestionElementosImplementacion implements GestionElementos{
     private DaoElementos daoElementos;
 
     public GestionElementosImplementacion(DaoElementos daoElementos) {
-        this.daoElementos=daoElementos;
+        this.daoElementos = daoElementos;
     }
+
     public GestionElementosImplementacion() {
-        this.daoElementos= new DaoElementosImplementacion();
+        this.daoElementos = new DaoElementosImplementacion();
     }
+
     @Override
     public boolean isEmptyElementosList() {
         return false;
@@ -23,12 +25,17 @@ public class GestionElementosImplementacion implements GestionElementos {
 
     @Override
     public List<Elemento> getListaElementos() {
-        return List.of();
+        return  daoElementos.getElementos();
     }
 
     @Override
     public boolean insertarElemento(Elemento Elemento) {
-        return false;
+        return daoElementos.insertarElemento(Elemento);
+    }
+
+    @Override
+    public String getPalabraAdivinar(String categoria) {
+        return daoElementos.getPalabraAdivinar(categoria);
     }
 
     @Override
@@ -47,7 +54,7 @@ public class GestionElementosImplementacion implements GestionElementos {
     }
 
     @Override
-    public List<Elemento> getListaElementosCategoria() {
+    public List<Elemento> getListaElementosCategoria(String categoria) {
         return List.of();
     }
 
